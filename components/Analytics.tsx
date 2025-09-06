@@ -1,15 +1,15 @@
 import React from 'react'
 import { SalesDashboard } from './salesDashboard'
 import { VisitorInsights } from './VisitorInsight'
-import { Dashboard } from './Row2Anlytics'
-import TargetVsRealityChart, { TargetVsReality } from './TargetReality'
+
+import TargetVsRealityChart from './TargetReality'
 import CustomerSatisfaction from './CustomerSatisfaction'
 import VolumeServiceChart from './VolumeServiceChart'
-import TotalRevenueChart, { TotalRevenue } from './TotalRevenue'
+import TotalRevenueChart from './TotalRevenue'
 import TopProductsComponent from './TopProductsComponents'
 import SalesMappingComponent from './SalesMappingComponent'
 import SalesMap from './SalesMappingComponent'
-import { Volume } from 'lucide-react'
+
 const Analytics = () => {
   return (
     <div className='w-full h-full p-6 ' style={{backgroundColor:'#FAFBFC'}}>

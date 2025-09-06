@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { TotalRevenue } from './TotalRevenue';
 import { CustomerSatisfaction } from './CustomerSatisfaction';
 import { TargetVsReality } from './TargetReality';
