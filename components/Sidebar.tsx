@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { NavLink, useLocation } from "react-router-dom";
-import PieChart from "./ui/PieChart";
+
+
 import {
   LayoutDashboard,
   Trophy,
@@ -15,8 +15,7 @@ import {
   LogOut,
   Crown,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+
 import DabangPro from "./Dbangpro";
 
 const navigationItems = [
