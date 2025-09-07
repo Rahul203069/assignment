@@ -14,6 +14,21 @@ import Lanalytics from './skeleton/LoadingAnalytics'
 import { useEffect } from 'react'
 import { DashboardData } from '@/types/AnalyticsTypes'
 import axios from 'axios'
+import { convertSecondToFirst } from '@/lib/utils'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const Analytics = () => {
 
 
@@ -21,11 +36,11 @@ const Analytics = () => {
 
   useEffect(() => {
     axios
-      .get<DashboardData|null>("https://nestbackend-7tfp.onrender.com/api/dashboard/analytics")
+      .get<DashboardData|null>("http://localhost:3000/api/dashboard/data")
       .then((res) => {
         if(res.data!==null){
 
-          setData(res.data);
+          setData(convertSecondToFirst(res.data));
         }
         console.log(res.data)
        
