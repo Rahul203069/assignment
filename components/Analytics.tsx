@@ -36,7 +36,8 @@ const Analytics = () => {
 
   useEffect(() => {
     axios
-      .get<DashboardData|null>("http://localhost:3000/api/dashboard/data")
+      .get<DashboardData|null>("https://nestbackend-7tfp.onrender.com/api/dashboard/data")
+     
       .then((res) => {
         if(res.data!==null){
 
