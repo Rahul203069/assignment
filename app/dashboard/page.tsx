@@ -2,6 +2,7 @@
 import Analytics from '@/components/Analytics';
 import { DabangSidebar} from '@/components/Sidebar'
 import { useDebugValue, useState } from 'react';
+import Image from 'next/image';
 import { useEffect } from 'react';
 import axios from 'axios'
 import { ArrowDown, Search } from 'lucide-react'
@@ -50,18 +51,18 @@ Dashboard
 <div className='h-[60px] px-3 rounded-2xl cursor-pointer hover:bg-neutral-100 transition-all  mx-6 flex items-center   justify-between gap-4  font-semibold text-[18px]'>
     <div className='flex  items-center gap-3 '>
 
-    <div style={{
 
 
+       <Image
 
-fontWeight: "600",
-fontSize: "18px",
+                            src="/United.svg"
+                alt="Next.js logo"
+                width={18}
+                height={18}
+                priority
+              />
 
-lineHeight: "100%",
-letterSpacing: "0%",
-
-    }} className='bg-blue-600 rounded-b-full w-5 h-5'></div>
-    
+  
     Eng (us)
     </div>
    <div className='text-neutral-500 px-0'>
