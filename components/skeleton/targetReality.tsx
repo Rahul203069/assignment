@@ -13,7 +13,7 @@ const TargetVsRealitySkeleton = () => {
   ];
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-box border  w-[371px] h-[351px]">
+    <div className="bg-white p-6 rounded-2xl shadow-box   w-[371px] h-[351px]">
       {/* Header Skeleton */}
       <div className="mb-6">
         <div className="h-5 bg-gray-200 rounded-md w-32 animate-pulse"></div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const TopProductsSkeleton = () => {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-box border  w-[645px] h-[351px]">
+    <div className="bg-white p-6 rounded-2xl shadow-box   w-[645px] h-[351px]">
       {/* Header Skeleton */}
       <div className="mb-8">
         <div className="h-6 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-md w-32 animate-pulse bg-[length:200%_100%] animate-[shimmer_1.5s_infinite]"></div>
