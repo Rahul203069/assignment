@@ -1,17 +1,10 @@
 import React from 'react';
 import { ShoppingBag, Target } from 'lucide-react';
-
+import { useDashboard } from '@/Context/DashboardContext';
 const TargetVsRealityChart = () => {
+    const { data, setData } = useDashboard();
   // Data for the chart
-  const chartData = [
-    { month: 'Jan', reality: 85, target: 60 },
-    { month: 'Feb', reality: 55, target: 75 },
-    { month: 'Mar', reality: 45, target: 100 },
-    { month: 'Apr', reality: 70, target: 55 },
-    { month: 'May', reality: 85, target: 110 },
-    { month: 'June', reality: 80, target: 105 },
-    { month: 'July', reality: 90, target: 108 }
-  ];
+  const chartData = data?.targetVsReality
 
   return (
     <div className="bg-white p-6 rounded-2xl shadow-box w-[371px] h-[351px]">
@@ -22,7 +15,7 @@ const TargetVsRealityChart = () => {
       <div className="mb-8">
         {/* Chart Area */}
         <div className="flex items-end justify-between h-40 px-2">
-          {chartData.map((item, index) => (
+          {chartData?.map((item, index) => (
             <div key={item.month} className="flex flex-col items-center gap-1">
               {/* Bars Container */}
               <div className="flex items-end gap-1 h-32">

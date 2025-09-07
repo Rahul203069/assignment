@@ -1,17 +1,30 @@
 "use client"
 import Analytics from '@/components/Analytics';
 import { DabangSidebar} from '@/components/Sidebar'
-import { VisitorInsights } from '@/components/VisitorInsight';
+import { useDebugValue, useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios'
 import { ArrowDown, Search } from 'lucide-react'
 import React from 'react'
 import { FaRegBell } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
-
+import { DashboardData } from '@/types/AnalyticsTypes';
+import { DashboardProvider } from '@/Context/DashboardContext';
 type Props = {}
 
-const page = (props: Props) => {
+
+
+const page: React.FC = () => {
+
+
+
+
+
+
+
   return (
-    <div>
+    <div  style={{backgroundColor:'#FAFBFC'}}>
+      <DashboardProvider>
     <div className='flex w-full h-full'>
 
 
@@ -32,7 +45,7 @@ Dashboard
 
 <div className='flex items-center h-fulljustify-between '>
 
-<div className='flex  p-4 py-3 rounded-2xl  w-[513px] h-[60px] bg-neutral-50   items-center '> <Search fontSize={'3px'} style={{padding:'1px' ,margin:'2px'}} color='#5D5FEF'></Search><input className=' w-[523px]  rounded-2xl bg-neutral-50' placeholder='search '></input></div>
+<div className='flex  p-4 py-3 rounded-2xl  w-[513px] h-[60px] bg-neutral-50   items-center '> <Search fontSize={'3px'} style={{padding:'1px' ,margin:'2px'}} color='#5D5FEF'></Search><input className=' w-[523px] focus:outline-none text-xl  rounded-2xl bg-neutral-50' placeholder='search '></input></div>
 
 <div className='h-[60px] px-3 rounded-2xl cursor-pointer hover:bg-neutral-100 transition-all  mx-6 flex items-center   justify-between gap-4  font-semibold text-[18px]'>
     <div className='flex  items-center gap-3 '>
@@ -95,8 +108,8 @@ rounded-xl size-[48px] flex justify-center items-center '>
 
 
 
-<div className='flex gap-4 '>
-<div className='flex items-center gap-6'>
+<div className='flex gap-10  '>
+<div className='flex items-center gap-6 cursor-pointer hover:bg-neutral-100 transition-all  px-4 py-2 rounded-2xl'>
 
 <div className='w-[60px] h-[60px] bg-blue-400 rounded-xl wrap'>
 
@@ -118,7 +131,7 @@ rounded-xl size-[48px] flex justify-center items-center '>
 
 
 
-<div>
+<div className='ml-6 mr-8'>
 
   <IoIosArrowDown color='#151D48' size={16}></IoIosArrowDown>
 </div>
@@ -130,7 +143,12 @@ rounded-xl size-[48px] flex justify-center items-center '>
 
 </div>
 
-<Analytics></Analytics>
+<div className='flex-1 flex justify-center items-start py-0'>
+              <div className='w-full max-w-[1600px] px-0'>
+                <Analytics />
+              </div>
+            </div>
+
 
 
 
@@ -143,6 +161,7 @@ rounded-xl size-[48px] flex justify-center items-center '>
     </div>
 
 
+</DashboardProvider>
 </div>
   )
 }

@@ -1,22 +1,19 @@
 "use client";
 import React from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-
+import { useDashboard } from "@/Context/DashboardContext";
 // World TopoJSON data
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
 
 // Define the highlighted countries with correct numeric country codes
-const highlightedCountries: Record<string, string> = {
-  "840": "#F59E0B", // USA - Orange
-  "076": "#EF4444", // Brazil - Red
-  "156": "#8B5CF6", // China - Purple
-  "360": "#10B981", // Indonesia - Green
-  "566": "#3B82F6", // Nigeria - Blue
-};
 
 const SalesMap = () => {
+  
+  const { data, setData } = useDashboard();
+  
+  const highlightedCountries = data?.highlightedCountries || {};
   return (
-    <div className="bg-white shadow rounded-2xl p-4 w-[421px] h-[351px]">
+    <div className="bg-white shadow-box rounded-2xl p-4 w-[421px] h-[351px]">
       <h2 className="text-xl font-semibold subtitle mb-4">
         Sales Mapping by Country
       </h2>

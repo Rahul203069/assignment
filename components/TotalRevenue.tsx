@@ -1,9 +1,10 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell, CartesianGrid } from 'recharts';
+import { useDashboard } from '@/Context/DashboardContext';
 
 const TotalRevenueChart = () => {
-  // Data that matches the chart exactly
-  const data = [
+  // Fallback data that matches the chart exactly
+  const fallbackRevenue = [
     { name: 'Monday', onlineSales: 14, offlineSales: 12 },
     { name: 'Tuesday', onlineSales: 17, offlineSales: 11 },
     { name: 'Wednesday', onlineSales: 5, offlineSales: 22 },
@@ -13,85 +14,94 @@ const TotalRevenueChart = () => {
     { name: 'Sunday', onlineSales: 21, offlineSales: 11 }
   ];
 
+  const { data, setData } = useDashboard();
+  
+  // ✅ Use fallback data if context data is not available
+  const revenue = data?.totalRevenueChart || fallbackRevenue;
+
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 w-[645px] h-[351px]">
-      {/* Header */}
-      <h2 className="text-xl font-semibold text-gray-900 mb-8">Total Revenue</h2>
+    <div className="bg-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-box  w-full max-w-[645px] min-h-[300px] sm:min-h-[351px]">
+      <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-6 sm:mb-8">
+        Total Revenue
+      </h2>
       
       {/* Chart Container */}
-      <div className="w-[589px] h-[176px]  p-0 flex justify-center mb-6">
+      <div className="w-full h-[200px] sm:h-[176px] lg:h-[200px] flex justify-center mb-4 sm:mb-6">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
-            data={data}
-            margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
-            barGap={8}
-            barCategoryGap={32}
+            data={revenue}
+            margin={{ 
+              top: 0, 
+              right: window.innerWidth < 640 ? 10 : 0, 
+              left: window.innerWidth < 640 ? 10 : 0, 
+              bottom: 0 
+            }}
+            barGap={window.innerWidth < 640 ? 4 : 8}
+            barCategoryGap={window.innerWidth < 640 ? 16 : 32}
           >
-            {/* Horizontal grid lines */}
-            <CartesianGrid 
-              strokeDasharray="none" 
-              stroke="#F3F4F6" 
-              horizontal={true} 
+            <CartesianGrid
+              strokeDasharray="none"
+              stroke="#F3F4F6"
+              horizontal={true}
               vertical={false}
             />
-            {/* Y-axis with proper styling */}
-            <YAxis 
+            <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ 
-                fontSize: 12, 
+              tick={{
+                fontSize: window.innerWidth < 640 ? 10 : 12,
                 fill: '#9CA3AF',
                 fontWeight: 400
               }}
               domain={[0, 25]}
               tickCount={6}
               tickFormatter={(value) => `${value}k`}
+              width={window.innerWidth < 640 ? 30 : 40}
             />
-            
-            {/* X-axis with proper styling */}
-            <XAxis 
+            <XAxis
               dataKey="name"
               axisLine={false}
               tickLine={false}
-              tick={{ 
-                fontSize: 12, 
+              tick={{
+                fontSize: window.innerWidth < 640 ? 10 : 12,
                 fill: '#9CA3AF',
                 fontWeight: 400
               }}
               dy={10}
+              interval={0}
+              angle={window.innerWidth < 480 ? -45 : 0}
+              textAnchor={window.innerWidth < 480 ? "end" : "middle"}
+              height={window.innerWidth < 480 ? 60 : 40}
             />
-            
-            {/* Online Sales Bar (Blue) */}
-            <Bar 
-              dataKey="onlineSales" 
+            <Bar
+              dataKey="onlineSales"
               fill="#3B82F6"
               radius={[4, 4, 0, 0]}
-              barSize={20}
+              barSize={window.innerWidth < 640 ? 16 : 20}
             />
-            
-            {/* Offline Sales Bar (Green) */}
-            <Bar 
-              dataKey="offlineSales" 
+            <Bar
+              dataKey="offlineSales"
               fill="#10B981"
               radius={[4, 4, 0, 0]}
-              barSize={20}
+              barSize={window.innerWidth < 640 ? 16 : 20}
             />
           </BarChart>
         </ResponsiveContainer>
       </div>
 
       {/* Legend */}
-      <div className="flex items-center justify-center gap-8">
-        {/* Online Sales */}
+      <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:gap-8">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-          <span className="text-sm text-gray-600 font-medium">Online Sales</span>
+          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-blue-500 rounded-full flex-shrink-0"></div>
+          <span className="text-xs sm:text-sm text-gray-600 font-medium whitespace-nowrap">
+            Online Sales
+          </span>
         </div>
-
-        {/* Offline Sales */}
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-          <span className="text-sm text-gray-600 font-medium">Offline Sales</span>
+          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-500 rounded-full flex-shrink-0"></div>
+          <span className="text-xs sm:text-sm text-gray-600 font-medium whitespace-nowrap">
+            Offline Sales
+          </span>
         </div>
       </div>
     </div>

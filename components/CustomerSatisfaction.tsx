@@ -1,31 +1,20 @@
-//@ts-nocheck
+
 import React from 'react';
 import ChartLegend from './ChartLegend';
-
+import { useDashboard } from '@/Context/DashboardContext';
 const CustomerSatisfactionChart = () => {
   // Data points for the curves (normalized to fit SVG viewBox)
-  const lastMonthData = [
-    { x: 0, y: 75 },
-    { x: 50, y: 45 },
-    { x: 100, y: 50 },
-    { x: 150, y: 60 },
-    { x: 200, y: 55 },
-    { x: 250, y: 65 },
-    { x: 300, y: 70 }
-  ];
+  
 
-  const thisMonthData = [
-    { x: 0, y: 25 },
-    { x: 50, y: 35 },
-    { x: 100, y: 20 },
-    { x: 150, y: 40 },
-    { x: 200, y: 45 },
-    { x: 250, y: 50 },
-    { x: 300, y: 15 }
-  ];
+
+    const { data, setData } = useDashboard();
+
+
+const lastMonthData=data?.customerSatisfaction.lastMonthData
+const thisMonthData=data?.customerSatisfaction.thisMonthData
 
   // Generate smooth curve path using cubic Bezier curves
-  const generateSmoothPath = (points) => {
+  const generateSmoothPath = (points:any) => {
     if (points.length < 2) return '';
     
     let path = `M ${points[0].x} ${points[0].y}`;
@@ -108,7 +97,7 @@ const CustomerSatisfactionChart = () => {
           />
           
           {/* Data points */}
-          {lastMonthData.map((point, index) => (
+          {lastMonthData?.map((point, index) => (
             <circle
               key={`last-${index}`}
               cx={point.x}
@@ -118,7 +107,7 @@ const CustomerSatisfactionChart = () => {
               className="drop-shadow-sm"
             />
           ))}
-          {thisMonthData.map((point, index) => (
+          {thisMonthData?.map((point, index) => (
             <circle
               key={`this-${index}`}
               cx={point.x}

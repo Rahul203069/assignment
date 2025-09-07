@@ -30,50 +30,53 @@ const navigationItems = [
 ];
 
 export function DabangSidebar() {
- 
-  const currentPath = usePathname()
-const  router = useRouter()
+  const currentPath = usePathname();
+  const router = useRouter();
+
   return (
-    <div className="w-[345px] px-10 pt-8 h-screen bg-white border-r border-border flex flex-col">
+    <div className="w-[345px] px-10 pt-8 min-h-screen bg-white border-border flex flex-col">
       {/* Header */}
-      <div className="p-6  ">
+      <div className="p-6">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-custom rounded-lg flex items-center justify-center">
             <span className="text-primary-foreground font-bold text-sm">$</span>
           </div>
-          <span className="font-semibold   text-foreground text-3xl">Dabang</span>
+          <span className="font-semibold text-foreground text-3xl">Dabang</span>
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 p-4">
-        <div className="space-y-2">
-          {navigationItems.map((item) => {
-            const isActive = currentPath === item.url;
-            return (
-              <div  className="w-full flex justify-center"  key={item.title}>
-                <div
-               
-                  
-                  onClick={() => { router.push(item.url)}}
-                  className={` w-full py-[16px] px-[24px]  hover:cursor-pointer  text-[16px] flex justify-start  items-center gap-[24px]   rounded-xl  font-medium transition-all duration-200 ${
-                    isActive
-                      ? " text-primary-foreground shadow-lg bg bg-custom"
-                      : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                  }`}
-                >
-                  <item.icon className="w-5 h-5" />
-                  {item.title}
+      {/* Main Section */}
+      <div className="flex-1 flex flex-col">
+        {/* Navigation */}
+        <nav className="p-4">
+          <div className="space-y-5">
+            {navigationItems.map((item) => {
+              const isActive = currentPath === item.url;
+              return (
+                <div className="w-full flex justify-center" key={item.title}>
+                  <div
+                    onClick={() => {
+                      router.push(item.url);
+                    }}
+                    className={`w-full py-[16px] px-[24px] hover:cursor-pointer text-[16px] flex justify-start items-center gap-[24px] rounded-xl font-medium transition-all duration-200 ${
+                      isActive
+                        ? "text-primary-foreground shadow-lg bg-custom"
+                        : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                    }`}
+                  >
+                    <item.icon className="w-5 h-5" />
+                    {item.title}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      </nav>
+              );
+            })}
+          </div>
+        </nav>
 
-      {/* Pro Upgrade Card */}
-      <div className="p-4">
-       <DabangPro></DabangPro>
+        {/* Spacer + Pro Upgrade Card */}
+        <div className="flex-1 flex items-center justify-center">
+          <DabangPro />
+        </div>
       </div>
     </div>
   );

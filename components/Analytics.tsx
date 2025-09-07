@@ -1,6 +1,6 @@
 import React from 'react'
-import { SalesDashboard } from './salesDashboard'
-import { VisitorInsights } from './VisitorInsight'
+import  SalesDashboard  from './salesDashboard'
+import VisitorInsights from './VisitorInsight'
 
 import TargetVsRealityChart from './TargetReality'
 import CustomerSatisfaction from './CustomerSatisfaction'
@@ -9,8 +9,52 @@ import TotalRevenueChart from './TotalRevenue'
 import TopProductsComponent from './TopProductsComponents'
 import SalesMappingComponent from './SalesMappingComponent'
 import SalesMap from './SalesMappingComponent'
-
+import { useDashboard } from '@/Context/DashboardContext'
+import Lanalytics from './skeleton/LoadingAnalytics'
+import { useEffect } from 'react'
+import { DashboardData } from '@/types/AnalyticsTypes'
+import axios from 'axios'
 const Analytics = () => {
+
+
+  const { data, setData } = useDashboard();
+
+  useEffect(() => {
+    axios
+      .get<DashboardData|null>("https://nestbackend-7tfp.onrender.com/api/dashboard/analytics")
+      .then((res) => {
+        if(res.data!==null){
+
+          setData(res.data);
+        }
+        console.log(res.data)
+       
+      })
+      .catch((err) => {
+        setData(null)
+        console.error("Error fetching analytics:", err);
+        ;
+      });
+      console.log(data)
+  }, []);
+
+
+
+
+
+  if(data === null || data === undefined ){
+return(
+
+  
+  <Lanalytics></Lanalytics>
+)
+  
+  }else{
+
+
+
+
+
   return (
     <div className='w-full h-full p-6 ' style={{backgroundColor:'#FAFBFC'}}>
 <div className='width-full flex gap-6'>
@@ -33,7 +77,7 @@ style={{
 
 
 
-<SalesDashboard></SalesDashboard>
+<SalesDashboard  ></SalesDashboard>
 
 
 
@@ -58,7 +102,7 @@ style={{
          </div>
 
     </div>
-  )
+  )}
 }
 
 export default Analytics
