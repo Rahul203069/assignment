@@ -24,7 +24,7 @@ const page: React.FC = () => {
 
 
   return (
-    <div  style={{backgroundColor:'#FAFBFC'}}>
+    <div  >
       <DashboardProvider>
     <div className='flex w-full h-full'>
 

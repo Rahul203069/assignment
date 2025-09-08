@@ -130,6 +130,10 @@
   color: #5D5FEF;
 }
 
+body {
+  background-color: #FAFBFC;
+}
+
 
 
 @layer base {
