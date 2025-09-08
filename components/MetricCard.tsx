@@ -19,59 +19,59 @@ export const MetricCard = ({
   iconColor,
 }: MetricCardProps) => {
   return (
-    <div  style={{
-        backgroundColor:bgColor
-    }} className={cn(
-      "relative cursor-pointer p-6 rounded-2xl w-[180px] h-[184px] transition-all duration-200 hover:scale-105 hover:shadow-lg",
-      bgColor
-    )}>
+    <div
+      style={{ backgroundColor: bgColor }}
+      className={cn(
+        "relative cursor-pointer p-4 sm:p-6 rounded-2xl w-[180px] h-[184px] transition-all duration-200 hover:scale-105 hover:shadow-lg",
+        bgColor
+      )}
+    >
       {/* Icon */}
-      <div style={{backgroundColor:iconColor}} className={cn(
-        "w-[40px] h-[40px] rounded-full flex items-center justify-center mb-4",
-        iconColor
-      )}>
+      <div
+        style={{ backgroundColor: iconColor }}
+        className="w-[40px] h-[40px] rounded-full flex items-center justify-center mb-4"
+      >
         <Icon className="h-6 w-6 text-white" />
       </div>
 
       {/* Value */}
-      <div className="mb-1">
-        <span className="text-2xl font-semibold text-foreground">{value}</span>
+      <div className="mb-1 truncate">
+        <span className="text-xl sm:text-2xl font-semibold text-foreground truncate">
+          {value}
+        </span>
       </div>
 
       {/* Label */}
-      <div className="mb-3">
-        <span 
-        
-style={{
-  fontWeight: 500,
-  color:'#425166',
-  fontStyle: "normal",
-  fontSize: "16px",
-  lineHeight: "24px",
-  letterSpacing: "0px",
-}}
-        className="text-sm font-bse text-foreground">{label}</span>
+      <div className="mb-3 truncate">
+        <span
+          style={{
+            fontWeight: 500,
+            color: "#425166",
+            fontStyle: "normal",
+            fontSize: "14px",
+            lineHeight: "20px",
+            letterSpacing: "0px",
+          }}
+          className="truncate block"
+        >
+          {label}
+        </span>
       </div>
 
       {/* Change */}
-      <div>
+      <div className="truncate">
         <span
-        
-        style={
-
-            {
-
-
-fontWeight:"500",
-fontSize: "12px",
-color:'#4079ED',
-lineHeight: "16px",
-letterSpacing:" 0px",
-
-            }
-        }
-        
-        className="text-xs text-success-text font-medium">{change}</span>
+          style={{
+            fontWeight: "500",
+            fontSize: "12px",
+            color: "#4079ED",
+            lineHeight: "16px",
+            letterSpacing: "0px",
+          }}
+          className="text-xs font-medium truncate block"
+        >
+          {change}
+        </span>
       </div>
     </div>
   );
