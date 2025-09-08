@@ -73,7 +73,7 @@ return(
 
   return (
     <div className='w-full h-full p-6 ' style={{backgroundColor:'#FAFBFC'}}>
-<div className='width-full flex gap-6'>
+<div className='width-full flex gap-4'>
 
 
 <div

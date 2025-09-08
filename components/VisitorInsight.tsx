@@ -38,7 +38,7 @@ const VisitorInsights = () => {
   return (
     <div
       style={{
-        width: '593.02px',
+        width: '590px',
         height: '348px',
         opacity: 1,
         borderRadius: '20px',
