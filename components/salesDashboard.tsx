@@ -16,13 +16,15 @@ const SalesDashboard = () => {
   const metrics = data?.salesDashboardMetrics;
 
   return (
-    <div className="w-full max-w-[870px] mx-auto p-4 sm:p-6 bg-background h-full shadow-box rounded-2xl">
+    <div className="w-full max-w-[870px] mx-auto p-3 sm:p-4 md:p-6 bg-background h-full shadow-box rounded-2xl">
       
       {/* Header */}
-      <div className="flex flex-col sm:flex-row bg-white  items-start sm:items-center justify-between mb-6 space-y-3 sm:space-y-0 min-w-0">
+      <div className="flex flex-col sm:flex-row bg-white items-start sm:items-center justify-between mb-6 gap-3 min-w-0">
         <div className="truncate min-w-0">
-          <h1 className="text-xl sm:text-2xl font-semibold text-foreground truncate">Today's Sales</h1>
-          <p className="text-metric-text truncate">Sales Summary</p>
+          <h1 className="text-lg sm:text-xl md:text-2xl font-semibold text-foreground truncate">
+            Today's Sales
+          </h1>
+          <p className="text-sm sm:text-base text-metric-text truncate">Sales Summary</p>
         </div>
         <Button variant="outline" size="sm" className="gap-2 flex-shrink-0">
           <Download className="h-4 w-4" />
@@ -30,9 +32,18 @@ const SalesDashboard = () => {
         </Button>
       </div>
 
-      {/* Metrics Grid Wrapper with Horizontal Scroll */}
-      <div className="overflow-x-auto -mx-4 px-4">
-        <div className="grid grid-flow-col auto-cols-[180px] gap-4">
+      {/* Metrics Grid */}
+      <div className="overflow-x-auto -mx-3 px-3 sm:mx-0 sm:px-0">
+        <div
+          className="
+            grid gap-4 
+            grid-cols-1 
+            xs:grid-cols-2 
+            sm:grid-cols-3 
+            md:grid-cols-4 
+            lg:grid-cols-5
+          "
+        >
           {metrics?.map((metric) => {
             const Icon = iconMap[metric.icon];
 

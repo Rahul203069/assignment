@@ -1,13 +1,7 @@
-import { 
-  LineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  ResponsiveContainer, 
-  Tooltip 
-} from 'recharts';
-import { useDashboard } from '@/Context/DashboardContext';
+import { useDashboard } from "@/Context/DashboardContext";
+import { ResponsiveContainer, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Line } from 'recharts';
+
+
 
 const CustomLegend = () => {
   return (
@@ -31,6 +25,7 @@ const CustomLegend = () => {
   );
 };
 
+
 const VisitorInsights = () => {
   const { data } = useDashboard();
   const insights = data?.visitorInsights || [];
@@ -46,18 +41,15 @@ const VisitorInsights = () => {
       }}
       className="bg-white rounded-lg shadow-box p-6"
     >
-      <h2 className="text-lg font-semibold text-gray-900 mb-6">Visitor Insights</h2>
+      <h2 className="text-lg font-semibold text-gray-900 mb-6">
+        Visitor Insights
+      </h2>
 
       <div className="h-full w-full">
         <ResponsiveContainer width="100%" height="70%">
           <LineChart
             data={insights}
-            margin={{
-              top: 20,
-              right: 30,
-              left: 20,
-              bottom: 0,
-            }}
+            margin={{ top: 20, right: 30, left: 20, bottom: 0 }}
           >
             <CartesianGrid
               strokeDasharray="none"
@@ -80,9 +72,9 @@ const VisitorInsights = () => {
               domain={[0, 500]}
               ticks={[0, 100, 200, 300, 400, 500]}
             />
-            <Tooltip
-              cursor={{ stroke: 'hsl(var(--chart-grid))', strokeWidth: 1 }}
-            />
+            <Tooltip cursor={{ stroke: 'hsl(var(--chart-grid))', strokeWidth: 1 }} />
+            
+            {/* Lines */}
             <Line
               type="monotone"
               dataKey="loyalCustomers"
@@ -109,6 +101,8 @@ const VisitorInsights = () => {
             />
           </LineChart>
         </ResponsiveContainer>
+
+        {/* Legend */}
         <CustomLegend />
       </div>
     </div>

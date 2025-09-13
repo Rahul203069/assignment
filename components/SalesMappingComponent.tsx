@@ -2,21 +2,20 @@
 import React from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { useDashboard } from "@/Context/DashboardContext";
+
 // World TopoJSON data
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
 
-// Define the highlighted countries with correct numeric country codes
-
 const SalesMap = () => {
-  
-  const { data, setData } = useDashboard();
-  
+  const { data } = useDashboard();
   const highlightedCountries = data?.highlightedCountries || {};
+
   return (
-    <div className="bg-white shadow-box rounded-2xl p-4 w-[421px] h-[351px]">
-      <h2 className="text-xl font-semibold subtitle mb-4">
+    <div className="bg-white shadow-box rounded-2xl p-4 w-full max-w-[421px] mx-auto min-h-[351px]">
+      <h2 className="text-xl font-semibold subtitle mb-4 text-center sm:text-left">
         Sales Mapping by Country
       </h2>
+
       <div className="w-full h-[280px]">
         <ComposableMap
           projection="geoMercator"
@@ -54,8 +53,8 @@ const SalesMap = () => {
         </ComposableMap>
       </div>
 
-      {/* Legend */}
-      {/* <div className="mt-4 flex flex-wrap gap-2 text-xs">
+      {/* Optional Legend (Commented out) */}
+      {/* <div className="mt-4 flex flex-wrap gap-2 text-xs justify-center sm:justify-start">
         <div className="flex items-center gap-1">
           <div className="w-3 h-3 bg-orange-500 rounded"></div>
           <span>USA</span>

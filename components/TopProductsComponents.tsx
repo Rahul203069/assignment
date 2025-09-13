@@ -6,12 +6,12 @@ const TopProductsComponent = () => {
   const products = data?.topProducts;
 
   return (
-    <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-box border border-gray-100 w-full max-w-[645px] min-h-[300px] sm:h-[351px] overflow-hidden">
+    <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-box border border-gray-100 w-full max-w-[645px] mx-auto min-h-[300px] sm:min-h-[351px] overflow-hidden">
       {/* Header */}
-      <h2 className="text-lg sm:text-xl font-semibold subtitle mb-2 sm:mb-3 truncate">Top Products</h2>
-      
-      {/* Desktop Table Header - Hidden on mobile */}
-      <div className="hidden sm:flex items-center mb-0 text-xs text-gray-400 font-medium uppercase tracking-wide">
+      <h2 className="text-lg sm:text-xl font-semibold subtitle mb-4 sm:mb-6 truncate">Top Products</h2>
+
+      {/* Desktop Table Header */}
+      <div className="hidden sm:flex items-center mb-3 text-xs text-gray-400 font-medium uppercase tracking-wide">
         <div className="w-12 text-left">#</div>
         <div className="flex-1 text-left truncate">Name</div>
         <div className="w-32 lg:w-40 text-left">Popularity</div>

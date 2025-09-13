@@ -1,37 +1,34 @@
 import React from 'react';
 import { ShoppingBag, Target } from 'lucide-react';
 import { useDashboard } from '@/Context/DashboardContext';
+
 const TargetVsRealityChart = () => {
-    const { data, setData } = useDashboard();
-  // Data for the chart
-  const chartData = data?.targetVsReality
+  const { data } = useDashboard();
+  const chartData = data?.targetVsReality;
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-box w-[371px] h-[351px]">
+    <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-box w-full max-w-[400px] sm:max-w-[480px] mx-auto">
       {/* Header */}
-      <h2 className="text-lg font-semibold text-gray-900 mb-0">Target vs Reality</h2>
+      <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">Target vs Reality</h2>
       
       {/* Chart Container */}
-      <div className="mb-8">
-        {/* Chart Area */}
-        <div className="flex items-end justify-between h-40 px-2">
+      <div className="mb-6">
+        <div className="flex flex-wrap items-end justify-between h-40 px-2 gap-2">
           {chartData?.map((item, index) => (
-            <div key={item.month} className="flex flex-col items-center gap-1">
+            <div key={index} className="flex flex-col items-center gap-1 w-[12%] sm:w-[10%] min-w-[40px]">
               {/* Bars Container */}
-              <div className="flex items-end gap-1 h-32">
-                {/* Reality Bar (Green) */}
+              <div className="flex items-end gap-1 h-32 w-full">
                 <div 
-                  className="w-4 bg-emerald-400 rounded-t-sm"
+                  className="w-full bg-emerald-400 rounded-t-sm"
                   style={{ height: `${(item.reality / 120) * 100}%` }}
                 ></div>
-                {/* Target Bar (Yellow) */}
                 <div 
-                  className="w-4 bg-yellow-400 rounded-t-sm"
+                  className="w-full bg-yellow-400 rounded-t-sm"
                   style={{ height: `${(item.target / 120) * 100}%` }}
                 ></div>
               </div>
               {/* Month Label */}
-              <span className="text-xs text-gray-500 mt-2">{item.month}</span>
+              <span className="text-xs text-gray-500 mt-2 truncate text-center">{item.month}</span>
             </div>
           ))}
         </div>

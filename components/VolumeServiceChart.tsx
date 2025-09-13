@@ -2,7 +2,6 @@ import React from 'react';
 import ChartLegend2 from './ChartLegend2';
 
 const VolumeServiceChart = () => {
-  // Data for the bars (approximated from the image)
   const data = [
     { volume: 85, services: 40 },
     { volume: 100, services: 45 },
@@ -14,14 +13,15 @@ const VolumeServiceChart = () => {
   const maxHeight = 100;
 
   return (
-    <div style={{backgroundColor:'white'}} className="bg-white rounded-2xl z-20 p-8 w-[371px] h-[349px] ">
+    <div className="bg-white rounded-2xl opacity-100 z-20 p-6 sm:p-8 w-full max-w-[400px] mx-auto min-h-[349px]">
+      
       {/* Title */}
-      <h2 className="subtitle mb-8">
+      <h2 className="subtitle text-lg sm:text-xl mb-6 sm:mb-8 text-center sm:text-left">
         Volume vs Service Level
       </h2>
       
       {/* Chart Container */}
-      <div className="flex items-end justify-around space-x-4  mb-8 border-b pb-4">
+      <div className="flex items-end justify-between sm:justify-around space-x-2 sm:space-x-4 mb-6 sm:mb-8 border-b pb-4 overflow-x-auto">
         {data.map((item, index) => {
           const totalHeight = item.volume;
           const servicesHeight = item.services;
@@ -30,7 +30,7 @@ const VolumeServiceChart = () => {
           return (
             <div key={index} className="flex flex-col items-center">
               {/* Stacked Bar */}
-              <div className="w-[12px]  flex flex-col">
+              <div className="w-[10px] sm:w-[12px] flex flex-col">
                 {/* Volume (Blue) portion */}
                 <div 
                   className="bg-blue-500 w-full rounded-t-sm"
@@ -48,7 +48,7 @@ const VolumeServiceChart = () => {
       </div>
       
       {/* Legend */}
-      <ChartLegend2></ChartLegend2>
+      <ChartLegend2 />
       
     </div>
   );
