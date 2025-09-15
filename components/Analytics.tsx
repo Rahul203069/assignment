@@ -177,7 +177,8 @@ const Analytics = () => {
 
   useEffect(() => {
 
-
+// can be fetched from backend but it taking time to lead so i am usind dummy data to show faster loded
+    // it is talking longer time because i am not using bulk fetching in the backend it i easy fix cna be applied if it is gona be used
     // axios
     //   .get<DashboardData | null>('https://nestbackend-7tfp.onrender.com/api/dashboard/data')
     //   .then((res) => {
@@ -192,7 +193,7 @@ const Analytics = () => {
     //   });
 
       setTimeout(() => {
-        setData(convertSecondToFirst(dashboardData));
+        setData(dashboardData);
       }, 4000);
     console.log(data);
   }, []);
